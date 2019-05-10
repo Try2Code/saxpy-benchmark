@@ -15,7 +15,7 @@ CFLAGS = -std=c++11 -Ofast -march=native -mtune=native -funroll-loops -mfpmath=b
 EXE =
 RM = rm -f
 
-
+CLANG_FLAGS = -fopenmp  -fopenmp-targets=nvptx64-nvidia-cuda -v
 # OpenMP settings
 # Linux
 OMP_CFLAGS = -O3 -std=c++11 -fopenmp -fno-use-linker-plugin
@@ -48,6 +48,7 @@ CUDA_LDFLAGS =
 all: $(CPU_TARGETS)
 
 gpu: $(GPU_TARGETS)
+
 # CPU targets
 saxpy_cpu$(EXE): saxpy_cpu.cpp saxpy.h
 	$(CC) $(CFLAGS) $(CC_O) $(@) saxpy_cpu.cpp
