@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cmath>
 
-const unsigned N = (1 << 26);
+const unsigned N = (1 << 29);
 const float XVAL = rand() % 1000000;
 const float YVAL = rand() % 1000000;
 const float AVAL = rand() % 1000000;
