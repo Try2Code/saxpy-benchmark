@@ -4,7 +4,7 @@
 int main() {
    float *x = new float[N], *y = new float[N];
 
-   int g_num_threads = omp_get_num_threads();
+   int g_num_threads = omp_get_max_threads();
 #pragma omp parallel for schedule(static) shared(x,y)
    for (int i = 0; i < N; ++i) {
       x[i] = XVAL;

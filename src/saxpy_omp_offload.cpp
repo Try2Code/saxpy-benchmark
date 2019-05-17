@@ -4,8 +4,8 @@
 int main() {
    float *x = new float[N], *y = new float[N];
 
-   int g_num_threads = omp_get_num_threads();
-#pragma omptarget teams distribute parallel for
+   int g_num_threads = omp_get_max_threads();
+#pragma omp target teams distribute parallel for
    for (int i = 0; i < N; ++i) {
       x[i] = XVAL;
       y[i] = YVAL;
@@ -15,7 +15,7 @@ int main() {
 
    saxpy_timer timer;
 
-#pragma omptarget teams distribute parallel for
+#pragma omp target teams distribute parallel for
       for (int i=0; i<N; ++i)
          y[i] += AVAL * x[i];
 
