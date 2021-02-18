@@ -1,12 +1,13 @@
+!make:nvfortran -cpp -DN=1000000000  -stdpar -Minfo=accel -gpu=cc80,cuda11.0 saxpy_iso_fortran.f90 -Wall  -o saxpy_iso_fortran
 
 #ifndef N
 #define N 2**20
 #endif
 subroutine saxpy(n,a,x,y)
-  integer :: n
+  integer*8 :: n
   real :: a, x(n), y(n)
   
-  integer :: i
+  integer*8 :: i
   do concurrent (i = 1: n)
   y(i) = a*x(i)+y(i)
   enddo
